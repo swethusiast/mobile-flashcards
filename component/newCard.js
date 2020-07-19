@@ -4,15 +4,15 @@ import { addCardToDeck } from '../utits/api';
 
 class Home extends React.Component {
     state = {
-        qustion: '',
-        answear: '',
+        question: '',
+        answer: '',
     };
 
     addCard = async (id) => {
-        const { qustion, answear } = this.state;
+        const { question, answer } = this.state;
         const { I_key } = this.props.route.params;
 
-        await addCardToDeck(I_key, { qustion, answear });
+        await addCardToDeck(I_key, { question, answer });
         this.props.navigation.goBack();
     };
 
@@ -21,15 +21,15 @@ class Home extends React.Component {
             <View style={Styles.container}>
                 <View style={Styles.inputsContainer}>
                     <TextInput
-                        value={this.state.qustion}
-                        onChangeText={(qustion) => this.setState({ qustion })}
-                        placeholder="   qustion"
+                        value={this.state.question}
+                        onChangeText={(question) => this.setState({ question })}
+                        placeholder="question"
                         style={Styles.input}
                     />
                     <TextInput
-                        value={this.state.answear}
-                        onChangeText={(answear) => this.setState({ answear })}
-                        placeholder="   answear"
+                        value={this.state.answer}
+                        onChangeText={(answer) => this.setState({ answer })}
+                        placeholder="answer"
                         style={Styles.input}
                     />
                 </View>

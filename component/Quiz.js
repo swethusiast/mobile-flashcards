@@ -11,8 +11,8 @@ class Home extends React.Component {
 
     render() {
         const { deck } = this.props.route.params;
-        let qustion = deck[this.state.Q_id];
-
+        let question = deck[this.state.Q_id];
+        console.log(question);
         if (typeof deck === undefined || null || deck.length == 0) {
             return (
                 <View style={{ ...Styles.container, justifyContent: 'center' }}>
@@ -28,8 +28,7 @@ class Home extends React.Component {
             return (
                 <View style={{ ...Styles.container, justifyContent: 'center' }}>
                     <Text style={Styles.TitelText}>
-                        {' '}
-                        retsult : {this.state.Correct} of {deck.length}
+                        result : {this.state.Correct} of {deck.length}
                     </Text>
                     <TouchableOpacity
                         onPress={() => {
@@ -54,9 +53,9 @@ class Home extends React.Component {
             <View style={Styles.container}>
                 <Text>{this.state.Q_id + 1 + ' /  ' + deck.length}</Text>
                 <View style={{ flex: 1, justifyContent: 'center' }}>
-                    <Text style={Styles.TitelText}> {this.state.flip ? qustion.answer : qustion.qustion} </Text>
+                    <Text style={Styles.TitelText}> {this.state.flip ? question.answer : question.question} </Text>
                     <Text onPress={() => this.setState({ flip: !this.state.flip })} style={Styles.SubTitleText}>
-                        {!this.state.flip ? 'answer' : 'qustion'}
+                        {!this.state.flip ? 'question' : 'answer'}
                     </Text>
                 </View>
 

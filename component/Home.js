@@ -1,6 +1,5 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-// import { deks } from "../utits/_DATA";
 import { getDecks } from '../utits/api';
 import { setLocalNotification } from '../utits/helper';
 
@@ -16,11 +15,13 @@ class Home extends React.Component {
         this.setState({ decks });
     }
     async componentDidUpdate() {
+        // clearLocalNotification()
         let decks = await getDecks();
         this.setState({ decks });
     }
+
     openDeck = (deck, I_key) => {
-        this.props.navigation.navigate('deckDerails', {
+        this.props.navigation.navigate('deckDetails', {
             deck,
             I_key,
         });
@@ -36,6 +37,7 @@ class Home extends React.Component {
                 borderWidth: 1,
                 width: '95%',
             }}
+            key={I_key}
         >
             <Text style={Styles.TitelText}>{I_key} </Text>
             <Text style={Styles.SubTitleText}>
@@ -54,11 +56,12 @@ class Home extends React.Component {
             );
         } else {
             const keys = Object.keys(decks);
+
             return (
                 <FlatList
                     contentContainerStyle={Styles.container}
                     data={keys}
-                    renderItem={({ item }) => <this.Item I_key={item} decks={decks} key={({ item }) => item} />}
+                    renderItem={({ item }) => <this.Item I_key={item} decks={decks} />}
                 />
             );
         }

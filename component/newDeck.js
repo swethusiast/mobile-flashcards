@@ -15,11 +15,11 @@ class Home extends React.Component {
         return (
             <View style={Styles.container}>
                 <View style={{ flex: 1, justifyContent: 'center' }}>
-                    <Text style={Styles.TitelText}> {'enter the name of your new deck'} </Text>
+                    <Text style={Styles.TitelText}> {'New Deck Name:'} </Text>
                     <TextInput
                         value={this.state.value}
                         onChangeText={(value) => this.setState({ value })}
-                        placeholder="   deck name"
+                        placeholder="deck name"
                         style={Styles.input}
                     />
                 </View>
@@ -41,7 +41,7 @@ const Styles = StyleSheet.create({
     },
     TitelText: {
         color: 'black',
-        fontSize: 50,
+        fontSize: 30,
         textAlign: 'center',
     },
     input: {
